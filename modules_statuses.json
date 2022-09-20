@@ -1,0 +1,7 @@
+{
+    "User": true,
+    "Language": true,
+    "Room": true,
+    "Question": true,
+    "Common": true
+}
