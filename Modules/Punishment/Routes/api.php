@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['namespace' => '\Modules\Room\Http\Api\Controllers', 'middleware' => 'auth:sanctum'], function () {
-    Route::post('rooms/create', 'RoomController@createRoom');
+Route::group(['namespace' => '\Modules\Punishment\Http\Api\Controllers', 'middleware' => 'auth:sanctum'], function () {
+    Route::post('punishments/create', 'PunishmentController@addPunishment');
+    Route::get('punishments', 'PunishmentController@getAllPunishments');
 });

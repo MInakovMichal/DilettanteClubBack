@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
+use Modules\Punishment\Entities\Punishment;
 use Modules\Question\Entities\Question;
 
 class User extends Authenticatable
@@ -32,8 +34,14 @@ class User extends Authenticatable
         'is_verify' => 'boolean',
     ];
 
-    public function question(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function question(): HasMany
     {
         return $this->hasMany(Question::class);
     }
+
+    public function punishment(): HasMany
+    {
+        return $this->hasMany(Punishment::class);
+    }
+
 }

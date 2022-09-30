@@ -3,5 +3,6 @@
     "Language": true,
     "Room": true,
     "Question": true,
-    "Common": true
+    "Common": true,
+    "Punishment": true
 }

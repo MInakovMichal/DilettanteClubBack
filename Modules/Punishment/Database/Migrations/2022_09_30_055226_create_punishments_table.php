@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRoomsTable extends Migration
+class CreatePunishmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rooms', function (Blueprint $table) {
+        Schema::create('punishments', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('password')->nullable();
-            $table->unsignedBigInteger('author_user_id');
+            $table->string('punishment');
+            $table->unsignedBigInteger('user_id');
 
             $table->timestamps();
 
-            $table->foreign('author_user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -32,6 +31,6 @@ class CreateRoomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rooms');
+        Schema::dropIfExists('punishments');
     }
 }
