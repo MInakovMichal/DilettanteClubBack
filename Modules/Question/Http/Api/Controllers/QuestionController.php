@@ -2,10 +2,12 @@
 
 namespace Modules\Question\Http\Api\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Modules\Common\Http\Api\Controllers\BaseController;
 use Modules\Question\Http\Api\Services\QuestionService;
 use Modules\Question\Http\Requests\CreateQuestionRequest;
 use Modules\Question\Transformers\QuestionResource;
+use Throwable;
 
 class QuestionController extends BaseController
 {
@@ -20,14 +22,22 @@ class QuestionController extends BaseController
         $this->service = $questionService;
     }
 
-    public function getAllQuestions(): \Illuminate\Http\JsonResponse
+    /**
+     * @return JsonResponse
+     */
+    public function getAllQuestions(): JsonResponse
     {
         $success = auth()->user()->question;
-        return $this->sendResponse('All questions', $success);
 
+        return $this->sendResponse('All questions', $success);
     }
 
-    public function addQuestion(CreateQuestionRequest $request)
+    /**
+     * @param CreateQuestionRequest $request
+     * @return JsonResponse
+     * @throws Throwable
+     */
+    public function addQuestion(CreateQuestionRequest $request): JsonResponse
     {
         $question = $this->service->addQuestion($request->dto());
 
