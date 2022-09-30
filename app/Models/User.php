@@ -36,6 +36,7 @@ class User extends Authenticatable
 
     public function question(): HasMany
     {
+
         return $this->hasMany(Question::class);
     }
 
